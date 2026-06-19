@@ -1,0 +1,83 @@
+## **Fase 1: Comprensión y Planificación**
+
+1. **Entender el problema**: 
+   - Tienes dos stacks (pilas): A y B
+   - Stack A contiene números desordenados, stack B está vacío
+   - Objetivo: ordenar los números en stack A de menor a mayor
+
+2. **Conocer las operaciones permitidas**:
+   - `sa`, `sb`, `ss`: swap (intercambiar los dos primeros elementos)
+   - `pa`, `pb`: push (mover elemento del top de un stack al otro)
+   - `ra`, `rb`, `rr`: rotate (mover el primer elemento al final)
+   - `rra`, `rrb`, `rrr`: reverse rotate (mover el último elemento al principio)
+
+## **Fase 2: Estructura de Datos**
+
+3. **Diseñar la estructura de datos**:
+   - Usar listas doblemente enlazadas (ya tienes `t_list` definida)
+   - Implementar funciones básicas para manejar las listas en `lst_utils.c`:
+     * `ft_lstnew(int value)` - Crear nuevo nodo
+     * `ft_lstclear(t_list **lst)` - Liberar toda la lista
+     * `ft_lstsize(t_list *lst)` - Obtener tamaño
+     * `ft_lstadd_front/back(t_list **lst, t_list *new)` - Añadir nodos
+     * `ft_lstremove_first/last(t_list **lst)` - Remover nodos
+     * `is_sorted(t_list *stack)` - Verificar si está ordenado
+     * `find_min/max(t_list *stack)` - Encontrar valores extremos
+
+4. **Crear funciones auxiliares adicionales**:
+   - **Parsing y validación** (archivo: `input_validation.c`):
+     * `validate_arguments(int argc, char **argv)` - Validar entrada
+     * `parse_numbers(char **argv)` - Convertir strings a enteros
+     * `check_duplicates(t_list *stack)` - Verificar duplicados
+     * `check_int_overflow(char *str)` - Verificar overflow
+   
+   - **Inicialización de stacks** (archivo: `stack_init.c`):
+     * `init_stack_a(char **argv)` - Crear stack A inicial
+     * `init_stack_b()` - Crear stack B vacío
+     * `free_stacks(t_list **stack_a, t_list **stack_b)` - Liberar memoria
+   
+   - **Funciones de utilidad** (archivo: `utils.c`):
+     * `print_operation(char *op)` - Imprimir operaciones
+     * `error_exit()` - Salir con error
+     * `ft_atoi_safe(char *str)` - Conversión segura a int
+
+## **Fase 3: Implementación de Operaciones**
+
+5. **Implementar todas las operaciones básicas**:
+   - Cada operación debe modificar los stacks correctamente
+   - Cada operación debe imprimir su nombre cuando se ejecuta
+
+## **Fase 4: Algoritmos de Ordenación**
+
+6. **Casos especiales simples**:
+   - 2 elementos: máximo 1 operación
+   - 3 elementos: máximo 2-3 operaciones
+   - Ya están ordenados: 0 operaciones
+
+7. **Algoritmo para conjuntos medianos (4-5 elementos)**:
+   - Usar stack B como auxiliar
+   - Estrategias específicas optimizadas
+
+8. **Algoritmo para conjuntos grandes (100-500 elementos)**:
+   - Algoritmo más complejo (ej: radix sort adaptado, o algoritmos con chunks)
+   - Objetivo: minimizar el número de operaciones
+
+## **Fase 5: Optimización y Testing**
+
+9. **Optimización**:
+   - Analizar y reducir operaciones innecesarias
+   - Implementar heurísticas para mejorar eficiencia
+
+10. **Testing exhaustivo**:
+    - Probar con casos edge (duplicados, ya ordenados, orden inverso)
+    - Verificar que no excedes los límites de operaciones requeridos
+    - Usar el checker proporcionado para validar
+
+## **Fase 6: Manejo de Errores**
+
+11. **Gestión de errores**:
+    - Argumentos inválidos
+    - Números duplicados
+    - Overflow de integers
+    - Memoria insuficiente
+
